@@ -25,48 +25,47 @@
 - Not fault tolerant 
 * Iterative approach
 ** Kafka
-*** About kafka
+*** About
 - Kafka là hệ thống message publish/subscribe phân tán & có khả năng scale rất tốt 
-*** Use case
-- Log aggregation
 *** Where does it fit 
 - Log aggregation
 - Tracking hành động người dùng: publish vào defined topic
-*** Why we use it?
+*** Why we use it
 - Use as a message queue
 - Fault tolerant (when something wrong happen, we can rollback to last fail state, message will not be drop)
 - It is a stream so it is speed-dependence-free (các service khác consume ở tốc độ khác nhau)
 ** Sqoop
-*** About sqoop?
-*** What it does?
-- Move data from rdbms to file system or vice versa
-*** Where does it fit?
-*** Why we use it?
+*** About
+- A tool designed for efficiently transferring bulk data between Apache Hadoop and structured datastores
+*** Where does it fit
+- Transfer data to file system
+*** Why we use it
 - Not reinvent the wheel
 - Support distributed process (scalable)
 - Upsert
 ** Hadoop
-*** About hadoop?
-*** What it does?
-*** Where does it fit?
-*** Why we use it?
+*** About
+*** What it does
+*** Where does it fit
+- File system
+*** Why we use it
 - HDFS
-- Auto balance node
 - Cost-effective scale to rapidly growing data demands
 ** Spark
-*** What it does?
+*** About
 - Faster map reduce (data mostly store on ram when process)
 - Compute on big data
-*** Where does it fit?
+*** Where does it fit
+- Process raw data
 *** Why we use it?
 - Support many data file system
-- Distributed process (scalable)
+- Distributed processing (scalable)
 ** Holistics
-*** What it does?
+*** About
 - Visualize data
 *** Where does it fit?
 *** Why we use it?
-- Easy to use, mostly drag & drop 
+- Easy to use
 - Just set input source & write query
 * Final result
 ** Show hình final infrastructure
