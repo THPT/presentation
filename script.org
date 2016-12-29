@@ -1,77 +1,77 @@
 * Introduction 
 ** Giới thiệu team member
 ** Tổng quan về Big Data
-*** Big data là thuật ngữ để nói đến tập hợp lượng dữ liệu lớn vượt qua mức đảm đương của các ứng dụng và công cụ truyền thống.
-*** Vì sao Big Data? Chứa nhiều thông tin quý giá nếu trích xuất thông tin thành công giúp cho việc ra quyết định kinh doanh, nghiên cứu khoa học, ...
+- Big data là thuật ngữ để nói đến tập hợp lượng dữ liệu lớn vượt qua mức đảm đương của các ứng dụng và công cụ truyền thống.
+- Vì sao Big Data? Chứa nhiều thông tin quý giá nếu trích xuất thông tin thành công giúp cho việc ra quyết định kinh doanh, nghiên cứu khoa học, ...
 ** Tổng quan về project:
 *** Yêu cầu chính: 
-**** Data team của một startup phải xây dựng infrastructure dùng cho việc report (realtime & statistics)
+- Data team của một startup phải xây dựng infrastructure dùng cho việc report (realtime & statistics)
 *** Hướng tiếp cận:
-**** Handle fast growing data
-**** Fault-tolerance (đảm bảo hệ thống không bị gián đoạn khi có lỗi xãy ra)
-**** Scalable system
+- Handle fast growing data
+- Fault-tolerance (đảm bảo hệ thống không bị gián đoạn khi có lỗi xãy ra)
+- Scalable system
 * First approach
 ** First approach
-*** Thu thập Log data (scribe, go or whatever) & lưu trữ dữ liệu xuống tập tin hệ thống
-*** Lưu dữ liệu ở MySQL dùng cho dữ liệu thống kê
-*** Lưu dữ liệu ở Postgres dùng cho dữ liệu báo cáo
+- Thu thập Log data (scribe, go or whatever) & lưu trữ dữ liệu xuống tập tin hệ thống
+- Lưu dữ liệu ở MySQL dùng cho dữ liệu thống kê
+- Lưu dữ liệu ở Postgres dùng cho dữ liệu báo cáo
 ** Ưu điểm: 
-*** Implement đơn giản và nhanh
-*** Hợp khi cần xử lý lượng dữ liệu nhỏ
-*** Dùng các công nghệ thông dùng
+- Implement đơn giản và nhanh
+- Hợp khi cần xử lý lượng dữ liệu nhỏ
+- Dùng các công nghệ thông dùng
 ** Mặt hạn chế: 
-*** Cần nhiều tài nguyên & thời gian để xử lý dữ liệu lớn 
-*** Khó scale 
-*** Not fault tolerant 
+- Cần nhiều tài nguyên & thời gian để xử lý dữ liệu lớn 
+- Khó scale 
+- Not fault tolerant 
 * Iterative approach
 ** Kafka
 *** About kafka
-**** Kafka là hệ thống message publish/subscribe phân tán & có khả năng scale rất tốt 
+- Kafka là hệ thống message publish/subscribe phân tán & có khả năng scale rất tốt 
 *** Use case
-**** Log aggregation
+- Log aggregation
 *** Where does it fit 
-**** Log aggregation
-**** Tracking hành động người dùng: publish vào defined topic
+- Log aggregation
+- Tracking hành động người dùng: publish vào defined topic
 *** Why we use it?
-**** Use as a message queue
-**** Fault tolerant (when something wrong happen, we can rollback to last fail state, message will not be drop)
-**** It is a stream so it is speed-dependence-free (các service khác consume ở tốc độ khác nhau)
+- Use as a message queue
+- Fault tolerant (when something wrong happen, we can rollback to last fail state, message will not be drop)
+- It is a stream so it is speed-dependence-free (các service khác consume ở tốc độ khác nhau)
 ** Sqoop
 *** About sqoop?
 *** What it does?
-**** Move data from rdbms to file system or vice versa
+- Move data from rdbms to file system or vice versa
 *** Where does it fit?
 *** Why we use it?
-**** Not reinvent the wheel
-**** Support distributed process (scalable)
-**** Upsert
+- Not reinvent the wheel
+- Support distributed process (scalable)
+- Upsert
 ** Hadoop
 *** About hadoop?
 *** What it does?
 *** Where does it fit?
 *** Why we use it?
-**** HDFS
-**** Auto balance node
-**** Cost-effective scale to rapidly growing data demands
+- HDFS
+- Auto balance node
+- Cost-effective scale to rapidly growing data demands
 ** Spark
 *** What it does?
-**** Faster map reduce (data mostly store on ram when process)
-**** Compute on big data
+- Faster map reduce (data mostly store on ram when process)
+- Compute on big data
 *** Where does it fit?
 *** Why we use it?
-**** Support many data file system
-**** Distributed process (scalable)
+- Support many data file system
+- Distributed process (scalable)
 ** Holistics
 *** What it does?
-**** Visualize data
+- Visualize data
 *** Where does it fit?
 *** Why we use it?
-**** Easy to use, mostly drag & drop 
-**** Just set input source & write query
+- Easy to use, mostly drag & drop 
+- Just set input source & write query
 * Final result
 ** Show hình final infrastructure
-*** Sơ đồ tổng quan ==> Sơ đồ chi tiết
-*** Đi lược qua lại các thành phần đã áp dụng (trên sơ đồ chi tiết)
+- Sơ đồ tổng quan => Sơ đồ chi tiết
+- Đi lược qua lại các thành phần đã áp dụng (trên sơ đồ chi tiết)
 ** Những phần đã cover trong project & các phần chưa đề cập đến của Big Data
-*** Data scientist: machine learning
-*** Data analyst: business aspect
+- Data scientist: machine learning
+- Data analyst: business aspect
